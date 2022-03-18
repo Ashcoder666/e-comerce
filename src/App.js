@@ -4,39 +4,48 @@ import Header from './components/Header'
 import books from './Lib/data'
 import Products from './components/Products'
 import Cart from './components/Cart'
+import {Provider} from 'react-redux'
+import store from './Redux/useRedeucer'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 function App() {
-  const [data,setData] =useState (books)
-  const [cart,setCart] = useState ([])
-  const [realCart,setRealCart] = useState([])
+
+  
 
  const addToCart = (item)=>{
    
 
-   setCart(prev=>[...prev,{...item,quantity:1}])
+  //  prev=>[...prev,{...item,quantity:1}]
    
 
     
  }
 
- useEffect(()=>{
-   if(cart){
-   localStorage.setItem('books', JSON.stringify(cart))
-   const ls= localStorage.getItem('books')
-   const parsed = JSON.parse(ls)
-   setRealCart(parsed)
  
-   }
    
   
- },[cart])
- console.log(cart)
+
   return (
+    <BrowserRouter>
+    <Provider store={store}>
     <div className="App">
-      <Header cart={cart}/>
-      <Products data={data} addToCart={addToCart}/>
-      <Cart cart={realCart}/>
+
+
+      <Header />
+      <Routes>
+
+      <Route path='/' element={<Products  />} />
+      <Route path='/cart'  element={<Cart />} />
+      
+      
+      
+
+
+      </Routes>
+      
     </div>
+    </Provider>
+    </BrowserRouter>
   );
 }
 

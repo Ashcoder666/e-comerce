@@ -1,7 +1,11 @@
 import React from 'react'
 import {Card , CardMedia , CardContent ,CardActions , Typography ,IconButton} from '@material-ui/core'
+import {useDispatch,useSelector} from 'react-redux'
 
-const Product = ({item,addToCart}) => {
+const Product = ({item}) => {
+    
+    const dispatch = useDispatch()
+   
   return (
     <>
      <Card style={{margin:'10px'}}>
@@ -27,7 +31,12 @@ const Product = ({item,addToCart}) => {
         </CardContent>
 
         <CardActions>
-            <IconButton onClick={()=>{addToCart(item)}}>
+            <IconButton onClick={()=>{
+                dispatch({
+                    type: 'addToCart',
+                    info: item
+                })
+            }}>
                 +
             </IconButton>
         </CardActions>
