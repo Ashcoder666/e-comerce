@@ -1,12 +1,21 @@
 import React from 'react'
-import {Grid,Typography} from '@material-ui/core'
+import {Grid,Typography,Button} from '@material-ui/core'
 import {useSelector} from 'react-redux'
 import CartItem from './CartItem'
+import {Link} from 'react-router-dom'
 const Cart = () => {
   const cart = useSelector((state)=>{
-    return state.cart
+    return state.appReducer.cart
   })
-  console.log(cart)
+
+  const sum = cart.reduce((sum,val)=>{
+    if (val.quantity >1){
+      return sum + (val.quantity *val.pages)
+    }else{
+      return sum + val.pages
+    }
+  },0)
+ 
   return (
     <>
     <Grid container >
@@ -21,6 +30,18 @@ const Cart = () => {
        }
 
     </Grid>
+
+    <div className="total-amount">
+      <div className="total">
+        <Typography variant="h6">
+          Total Amount : {sum}
+        </Typography>
+      </div>
+      <div className="buttons">
+           <Button >back</Button> 
+           <Button component={Link} to='/checkout' variant='contained' color='primary'>Next</Button> 
+      </div>
+    </div>
       
     </>
   )

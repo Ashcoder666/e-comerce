@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import {Link} from 'react-router-dom'
 const Header = () => {
   const state= useSelector((state)=>{
-    return state.cart
+    return state.appReducer.cart
   })
     const classes = makeStyles()
   return (

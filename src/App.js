@@ -1,25 +1,19 @@
 import React,{useEffect, useState} from 'react';
 import './app.css';   
 import Header from './components/Header'
-import books from './Lib/data'
+
 import Products from './components/Products'
 import Cart from './components/Cart'
 import {Provider} from 'react-redux'
 import store from './Redux/useRedeucer'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import CheckOut from './components/CheckOut'
 
 function App() {
 
   
 
- const addToCart = (item)=>{
-   
 
-  //  prev=>[...prev,{...item,quantity:1}]
-   
-
-    
- }
 
  
    
@@ -36,6 +30,7 @@ function App() {
 
       <Route path='/' element={<Products  />} />
       <Route path='/cart'  element={<Cart />} />
+      <Route path='/checkout' element={<CheckOut />} />
       
       
       

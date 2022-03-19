@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux'
 
 const Products = () => {
   const data = useSelector((state) =>{
-    return state.data
+    return state.appReducer.data
 })
   return (
     <>
