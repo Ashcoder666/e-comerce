@@ -13,6 +13,7 @@ const Cart = () => {
 
        {cart &&
          cart.map(item=>(
+           
            <Grid item key={item.title} xs={12} sm={6} md={4} >
              <CartItem item={item}/>
            </Grid>

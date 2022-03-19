@@ -34,7 +34,7 @@ const Product = ({item}) => {
             <IconButton onClick={()=>{
                 dispatch({
                     type: 'addToCart',
-                    info: item
+                    payload: item
                 })
             }}>
                 +
